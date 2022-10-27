@@ -48,12 +48,10 @@ export namespace Reflect {
       *
       */
 	export function defineMetadata(metadataKey: ValidKey, metadataValue: ValidValue, target: ValidTarget, propertyKey: ValidKey): void {
+		const MetadataMap = GetMetadataMap(target, propertyKey);
+
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		const AnyTarget = (target as any)
-
-		const MetadataMap = GetMetadataMap(target, propertyKey)
-
-		AnyTarget.ReflectPrototype ?? (AnyTarget.ReflectPrototype = target)
+		(target as any).ReflectPrototype ?? ((target as any).ReflectPrototype = target)
 
 		MetadataMap.set(metadataKey, metadataValue)
 	}
@@ -90,9 +88,7 @@ export namespace Reflect {
       */
 	export function getMetadata(metadataKey: ValidKey, target: ValidTarget, targetKey: ValidKey): ValidValue {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		const AnyTarget = (target as any)
-
-		return AnyTarget.ReflectPrototype ? GetMetadataMap(AnyTarget.ReflectPrototype, targetKey).get(metadataKey) : GetMetadataMap(target, targetKey).get(metadataKey)
+		return (target as any).ReflectPrototype ? GetMetadataMap((target as any).ReflectPrototype, targetKey).get(metadataKey) : GetMetadataMap(target, targetKey).get(metadataKey)
 	}
 
 	/**
