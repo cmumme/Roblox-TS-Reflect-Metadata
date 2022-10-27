@@ -1,0 +1,40 @@
+{
+  "name": "@rbxts/experimental-reflect",
+  "version": "1.0.0",
+  "main": "out/init.lua",
+  "license": "MIT",
+  "author": {
+    "name": "typechecked",
+    "email": "me@typechecked.dev",
+    "url": "https://typechecked.dev"
+  },
+  "repository": "github:cmumme/Roblox-TS-Reflect-Metadata",
+  "scripts": {
+    "build": "rbxtsc",
+    "watch": "rbxtsc -w",
+    "prepublishOnly": "yarn run build",
+    "test": "mocha -r ts-node/register 'src/**/*.spec.ts'"
+  },
+  "types": "out/index.d.ts",
+  "files": [
+    "out",
+    "!**/*.tsbuildinfo"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@rbxts/compiler-types": "^1.3.3-types.1",
+    "@rbxts/types": "^1.0.646",
+    "@types/chai": "^4.3.3",
+    "@types/mocha": "^10.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.41.0",
+    "@typescript-eslint/parser": "^5.41.0",
+    "chai": "^4.3.6",
+    "eslint": "^8.26.0",
+    "eslint-plugin-roblox-ts": "^0.0.34",
+    "mocha": "^10.1.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
+  }
+}
